@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/board")
-public class AccountController {
+public class BoardController {
 	/*
 	@Autowired
 	AccountServiceImpl accountService;
