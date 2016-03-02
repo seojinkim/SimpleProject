@@ -1,13 +1,20 @@
 package com.bank.web.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @SessionAttributes("member")
 @RequestMapping("/member")
 public class MemberController {
+	@RequestMapping(value = "/joinForm", method = RequestMethod.GET)
+	public String joinForm(Model model) {
+
+		return "member/joinForm";
+	}
 	/*
 
 	@Autowired
@@ -48,12 +55,6 @@ public class MemberController {
 		}
 
 		return page;
-	}
-
-	@RequestMapping(value = "/joinForm", method = RequestMethod.GET)
-	public String joinForm(Model model) {
-
-		return "member/joinForm";
 	}
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
