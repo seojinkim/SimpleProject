@@ -18,4 +18,5 @@ public interface BoardMapper {
 	public int deleteMember(String index);	//민호
 
 	public String selectUserWritten(String index, String id);	//민호
+	
 }
