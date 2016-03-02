@@ -1,5 +1,7 @@
 package com.bank.web.service;
 
+import com.bank.web.domain.BoardVO;
+
 public interface BoardService {
 	/*	// Database 에서 CRUD
 	// create
@@ -16,4 +18,7 @@ public interface BoardService {
 	
 	// 4. 잔액조회
 	public String search();*/
+	
+	public BoardVO[] selectBoard();	//연식
+	public int insertBoard(String id, String title, String context);	//연식
 }
