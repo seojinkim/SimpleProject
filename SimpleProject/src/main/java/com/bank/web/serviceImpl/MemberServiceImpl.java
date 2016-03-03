@@ -57,13 +57,15 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int updateMember(MemberVO member) {
 		// TODO Auto-generated method stub
-		return 0;
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		return mapper.updateMember(member);
 	}
 
 	@Override
 	public int remove(String id) {
-		// TODO Auto-generated method stub
-		return 0;
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class); 
+		return mapper.deleteMember(id);
+
 	}
 
 	/*
@@ -73,13 +75,7 @@ public class MemberServiceImpl implements MemberService {
 	 * // 에어리어
 	 * 
 	 * 
-	 * @Override public int updateMember(MemberVO member) {
-	 * //map.replace(member.getUserid(), member); System.out.println("서비스 멤버2 :"
-	 * + member.getUserid()); if (sqlSession == null) { System.out.println(
-	 * "수정 세션이 널값입니다"); } else { System.out.println("수정 세션이 널이 아닙니다"); }
-	 * MemberMapper mapper = sqlSession.getMapper(MemberMapper.class); int
-	 * result = mapper.updateMember(member); System.out.println("수정 결과 : " +
-	 * result); return result; }
+	 *
 	 * 
 	 * 
 	 * @Override public MemberVO searchById(String id) { // 아이디로 회원정보 검색 return

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.bank.web.domain.MemberVO;
 import com.bank.web.mapper.MemberMapper;
@@ -30,10 +31,7 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/login")
-	public String login(
-			@RequestParam("id") String id,
-			@RequestParam("password") String password,
-			HttpSession session,
+	public String login(@RequestParam("id") String id, @RequestParam("password") String password, HttpSession session,
 			Model model) {
 		System.out.println("넘어온 아이디" + id);
 		System.out.println("넘어온 패스워드" + password);
@@ -71,11 +69,8 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/join")
-	public String join(
-			@RequestParam("id") String id,
-			@RequestParam("password") String password,
-			@RequestParam("name") String name,
-			Model model) {
+	public String join(@RequestParam("id") String id, @RequestParam("password") String password,
+			@RequestParam("name") String name, Model model) {
 
 		member.setId(id);
 		member.setName(name);
@@ -83,47 +78,70 @@ public class MemberController {
 
 		System.out.println(member.toString());
 		int result = service.join(member);
-		if (result == 1) {
+		if (result == 0) {
 			System.out.println("회원가입 실패");
 
+		} else if (result == 1) {
+			System.out.println("회원가입 성공");
 		}
+
+		// model.addAttribute("message","회원가입이 완료");
 		return "member/loginForm";
 
+	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(Model model, SessionStatus status) {
+		status.setComplete();
+		System.out.println("로그아웃!");
+		return "member/loginForm";
+	}
+
+	@RequestMapping(value = "/updateForm", method = RequestMethod.GET)
+	public String updateForm() {
+		return "member/updateForm";
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(
+			@RequestParam("password") String password,
+			@RequestParam("name") String name,
+			HttpSession session, Model model) {
+
+		MemberVO temp = new MemberVO();
+		temp = (MemberVO) session.getAttribute("member");
+		System.out.println("화면에서 넘어온 비번 " + password);
+		System.out.println("화면에서 넘어온 이름 " + name);
+
+
+		member.setId(temp.getId());
+		member.setPassword(password);
+		member.setName(name);
+		int result = service.updateMember(member);
+		String page = "member/detail";
+		if (result == 1) {
+			System.out.println("회원 수정 성공");
+			temp.setPassword(password);
+			temp.setName(name);
+		
+			session.setAttribute("member", temp);
+			page = "redirect:/board/boardList";
+		} else {
+			System.out.println("회원 수정 실패");
+			page = "member/updateForm";
+		}
+
+		return page;
 	}
 	/*
 	 * 
 	 * 
 	 * 
 	 * 
-	 * 
-	 * @RequestMapping(value = "/logout", method = RequestMethod.GET) public
-	 * String logout(Model model, SessionStatus status) { status.setComplete();
-	 * return "global/home"; }
-	 * 
-	 * @RequestMapping(value = "/updateForm", method = RequestMethod.GET) public
-	 * String updateForm() { return "member/updateForm"; }
-	 * 
 	 * @RequestMapping(value = "/detail", method = RequestMethod.GET) public
 	 * String detail() { return "member/detail"; }
 	 * 
-	 * @RequestMapping(value = "/update", method = RequestMethod.GET) public
-	 * String update(@RequestParam("password") String password,
 	 * 
-	 * @RequestParam("addr") String addr, HttpSession session, Model model) {
-	 * 
-	 * MemberVO temp = new MemberVO(); temp = (MemberVO)
-	 * session.getAttribute("member"); System.out.println("화면에서 넘어온 비번 " +
-	 * password); System.out.println("화면에서 넘어온 주소 " + addr); System.out.println(
-	 * "세션에 있는 아이디 " + temp.getid());
-	 * 
-	 * member.setid(temp.getid()); member.setPassword(password);
-	 * member.setAddr(addr); int result = service.updateMember(member); String
-	 * page = "member/detail"; if (result == 1) { System.out.println("회원 수정 성공"
-	 * ); temp.setPassword(password); temp.setAddr(addr);
-	 * session.setAttribute("member", temp); page = "member/detail"; } else {
-	 * System.out.println("회원 수정 실패"); page = "member/updateForm"; }
-	 * 
-	 * return page; }
 	 * 
 	 * @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
 	 * public String remove(@PathVariable("id") String id, HttpSession session,
