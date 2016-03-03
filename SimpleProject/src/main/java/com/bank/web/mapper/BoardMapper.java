@@ -14,7 +14,7 @@ public interface BoardMapper {
 
 	public int insertBoard(@Param("id") String id,  @Param("title") String title, @Param("context") String context);	//연식
 
-	public int updateBoard(String title, String context, int index);	//민호
+	public int updateBoard(String title, @Param("update") String context, int index);	//민호
 
 	public int deleteBoard(int index);	//민호
 
