@@ -7,6 +7,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-여기는 게시글 작성!!
+<form action="${context}/board/insertBoard" method="post" name="insertBoardForm">
+제목<input type="text" id="title" name="title" />
+본문<input type="text" id="context" name="context"/>
+<input type="button" value="글쓰기" onclick="writeBoard()"/>
+</form>
+<script type="text/javascript">
+function writeBoard(){
+	
+	if (document.insertBoardForm.title.value=='') {
+	alert('제목를 입력해주세요');
+	document.insertBoardForm.title.focus();
+	} else if(document.insertBoardForm.context.value=='') {
+	alert('본문을 입력해주세요');
+	document.insertBoardForm.context.focus();
+	} else { 
+		document.insertBoardForm.submit();
+		return true;
+	}
+}
+</script>
 </body>
 </html>
