@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -103,16 +104,13 @@ public class MemberController {
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(
-			@RequestParam("password") String password,
-			@RequestParam("name") String name,
+	public String update(@RequestParam("password") String password, @RequestParam("name") String name,
 			HttpSession session, Model model) {
 
 		MemberVO temp = new MemberVO();
 		temp = (MemberVO) session.getAttribute("member");
 		System.out.println("화면에서 넘어온 비번 " + password);
 		System.out.println("화면에서 넘어온 이름 " + name);
-
 
 		member.setId(temp.getId());
 		member.setPassword(password);
@@ -123,7 +121,7 @@ public class MemberController {
 			System.out.println("회원 수정 성공");
 			temp.setPassword(password);
 			temp.setName(name);
-		
+
 			session.setAttribute("member", temp);
 			page = "redirect:/board/boardList";
 		} else {
@@ -133,6 +131,27 @@ public class MemberController {
 
 		return page;
 	}
+
+	@RequestMapping(value = "/withdrawal/{id}", method = RequestMethod.GET)
+	public String remove(
+			@PathVariable("id") String id, 
+			HttpSession session, 
+			SessionStatus status) {
+		System.out.println("삭제 파라미터 아이디 " + id);
+		int result = service.remove(id);
+		String page = "";
+		if (result == 1) {
+			System.out.println("회원 삭제 성공");
+			status.setComplete();
+			page = "redirect:/member/loginForm";
+		} else {
+			System.out.println("회원 삭제 실패");
+			page = "redirect:/member/updateForm";
+		}
+
+		return page;
+	}
+
 	/*
 	 * 
 	 * 
@@ -143,14 +162,6 @@ public class MemberController {
 	 * 
 	 * 
 	 * 
-	 * @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
-	 * public String remove(@PathVariable("id") String id, HttpSession session,
-	 * SessionStatus status) { System.out.println("삭제 파라미터 아이디2 " + id); int
-	 * result = service.remove(id); String page = ""; if (result == 1) {
-	 * System.out.println("회원 삭제 성공"); status.setComplete(); page =
-	 * "global/home"; } else { System.out.println("회원 삭제 실패"); page =
-	 * "member/detail"; }
 	 * 
-	 * return page; }
 	 */
 }
