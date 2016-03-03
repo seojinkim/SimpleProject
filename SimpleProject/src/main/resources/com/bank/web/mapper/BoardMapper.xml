@@ -11,7 +11,12 @@
  
  	<insert id="insertBoard" parameterType="com.bank.web.domain.BoardVO">
 		INSERT INTO board
-		VALUES (seq_idx.NEXTVAL, #{id}, #{title}, #{context})
+		VALUES (idx.NEXTVAL, #{id}, #{title}, #{context})
 	</insert>
 	
+	<select id="selectDetail" resultType="com.bank.web.domain.BoardVO">
+ 		SELECT *
+ 		FROM board
+ 		WHERE idx = #{idx}
+ 	</select>
  </mapper>

@@ -21,4 +21,5 @@ public interface BoardService {
 	
 	public BoardVO[] selectBoard();	//연식
 	public int insertBoard(String id, String title, String context);	//연식
+	public BoardVO selectDetail(int index);	//연식
 }

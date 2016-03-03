@@ -1,5 +1,6 @@
 package com.bank.web.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.bank.web.domain.BoardVO;
@@ -11,12 +12,13 @@ public interface BoardMapper {
 
 	public BoardVO[] selectBoardByTitle(String title);	//검색
 
-	public int insertBoard(String id, String title, String context);	//연식
+	public int insertBoard(@Param("id") String id,  @Param("title") String title, @Param("context") String context);	//연식
 
 	public int updateBoard(String title, String context);	//민호
 
 	public int deleteMember(String index);	//민호
 
 	public String selectUserWritten(String index, String id);	//민호
-	
+
+	public BoardVO selectDetail(int index);	//연식
 }
