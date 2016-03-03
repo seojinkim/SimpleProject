@@ -28,18 +28,18 @@
 					<div class="form-group">
 						<label for="input_pw" class="col-sm-4 control-label">PASSWORD</label>
 					 	<div class="col-sm-4">
-							<input type="password" class="form-control" id="password" name="password"/>
+							<input type="password" class="form-control" id="password" name="password" required="required"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="input_name" class="col-sm-4 control-label">NAME</label>
 					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="name" name="name" value="${member.name}"/>
+							<input type="text" class="form-control" id="name" name="name" value="${member.name}" required="required"/>
 						</div>
 					</div>
 					<div class="input_button text-center">
 						<input type="button" id="updateButton" class="btn btn-primary" value ="UPDATE" onclick="updateMember()"/>
-						<input type="button" id="updateButton" class="btn btn-primary" value ="WITHDRAWAL" onclick="withdrawalMember()"/>
+  						<input type="button" id="withdrawalButton" class="btn btn-primary" value ="WITHDRAWAL" onclick="withdrawalMember()"/>
 						<a class="btn btn-primary" href="${context}/board/boardList" role="button">CANCEL</a>
 					</div>					
 				</fieldset>
@@ -52,8 +52,12 @@
 			document.updateForm.submit();
 		}
 		function withdrawalMember() {
-			alert("아직 미완성");
-		}
+	         var withdrawal = confirm('정말 탈퇴하시겠습니까?');
+	         if(withdrawal == true){
+	        	 location.href="withdrawal";
+	         }
+	      }
+
 	</script>
 </body>
 </html>
