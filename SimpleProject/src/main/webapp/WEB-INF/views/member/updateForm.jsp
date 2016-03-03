@@ -3,63 +3,50 @@
 <html lang="ko">
 <head>
 	<meta charset="UTF-8" />
-	<title>회원정보수정</title>
+	<title>UPDATE</title>
 </head>
 <body>
 	<div id="update">
 		<div class="updateTop">
-			<h2>
-				<span>회원가입</span>
-			</h2>
+			<h2 class="text-center">회원정보수정</h2>
 		</div>
-		<div class="updateCenter">
-			<form action="${context}/member/update" method="get" name="updateForm">
+		<div class="updateCenter row">
+			<form action="${context}/member/update" method="get" name="updateForm" class="form-horizontal"> 
 				<fieldset class="updateField">
-					<div class="input_row">
-						<span class="input_box">
-							아이디 : ${member.userid}
-						</span>
+					<div class="form-group">
+					 	<label for="input_id" class="col-sm-4 control-label">ID</label>
+					 	<div class="col-sm-4">
+							<input type="text" class="form-control" id="userid" name="userid" value="${member.userid}" readonly/>
+						</div>
 					</div>
-					<div class="input_row">
-						<span class="input_box">
-							비밀번호 : <input type="password" id="password" name="password" value="${member.password}"/>
-						</span>
+					<div class="form-group">
+						<label for="input_pw" class="col-sm-4 control-label">PASSWORD</label>
+					 	<div class="col-sm-4">
+							<input type="password" class="form-control" id="password" name="password"/>
+						</div>
 					</div>
-					
-					<div class="input_row">
-						<span class="input_box">
-							이름 : ${member.name}
-						</span>
+					<div class="form-group">
+						<label for="input_name" class="col-sm-4 control-label">NAME</label>
+					 	<div class="col-sm-4">
+							<input type="text" class="form-control" id="name" name="name" value="${member.name}"/>
+						</div>
 					</div>
-					<div class="input_row">
-						<span class="input_box">
-							주소 : <input type="text" id="addr" name="addr" value="${member.addr}"/>
-						</span>
-					</div>
-					<div class="input_row">
-						<span class="input_box">
-							생년 : ${member.birth}
-						</span>
-					</div>
-					
-					<div class="input_button">
-						<span class="input_box">
-							<input type="submit" id="confirmButton" value ="확 인" onclick="updateMember()"/>
-							<input type="reset" id="cancelButton" value ="취 소" onclick="cancel()"/>
-						</span>
-					</div>
-					
+					<div class="input_button text-center">
+						<input type="button" id="updateButton" class="btn btn-primary" value ="UPDATE" onclick="updateMember()"/>
+						<input type="button" id="updateButton" class="btn btn-primary" value ="WITHDRAWAL" onclick="withdrawalMember()"/>
+						<a class="btn btn-primary" href="${context}/board/boardList" role="button">CANCEL</a>
+					</div>					
 				</fieldset>
 			</form>
 		</div>
 	</div>
 	<script type="text/javascript">
-		function cancel() {
-			location.href = "${context}/member/detail";
-		}
 		function updateMember() {
 			alert('정보수정');
 			document.updateForm.submit();
+		}
+		function withdrawalMember() {
+			alert("아직 미완성");
 		}
 	</script>
 </body>
