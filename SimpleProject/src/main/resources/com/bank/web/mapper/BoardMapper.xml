@@ -3,20 +3,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
- <mapper namespace="com.bank.web.mapper.BoardMapper">
- 	<select id="selectBoard" resultType="com.bank.web.domain.BoardVO">
- 		SELECT *
- 		FROM board
- 	</select>
- 
- 	<insert id="insertBoard" parameterType="com.bank.web.domain.BoardVO">
+<mapper namespace="com.bank.web.mapper.BoardMapper">
+	<select id="selectBoard" resultType="com.bank.web.domain.BoardVO">
+		SELECT *
+		FROM board
+	</select>
+
+	<insert id="insertBoard" parameterType="com.bank.web.domain.BoardVO">
 		INSERT INTO board
-		VALUES (idx.NEXTVAL, #{id}, #{title}, #{context})
+		VALUES
+		(idx.NEXTVAL, #{id}, #{title}, #{context})
 	</insert>
-	
+
 	<select id="selectDetail" resultType="com.bank.web.domain.BoardVO">
- 		SELECT *
- 		FROM board
- 		WHERE idx = #{idx}
- 	</select>
- </mapper>
+		SELECT *
+		FROM board
+		WHERE idx = #{idx}
+	</select>
+
+	<update id="updateBoard" parameterType="com.bank.web.domain.BoardVO">
+		UPDATE board
+		SET title = #{title}, context = #{context}
+		where idx = #{idx}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM board
+		WHERE idx = #{idx}
+	</delete>
+	
+	<select id="selectUserWritten" parameterType="String">
+		SELECT *
+		FROM board
+		WHERE id = #{id}
+	</select>
+</mapper>

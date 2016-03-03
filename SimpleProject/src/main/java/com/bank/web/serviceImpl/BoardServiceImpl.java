@@ -13,7 +13,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	@Override
 	public BoardVO[] selectBoard() {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
@@ -30,6 +30,26 @@ public class BoardServiceImpl implements BoardService {
 	public BoardVO selectDetail(int index) {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		return mapper.selectDetail(index);
+	}
+
+	@Override
+	public int updateBoard(String title, String context, int idx) {
+		// 글수정
+		BoardMapper mapper =  sqlSession.getMapper(BoardMapper.class);
+		return mapper.updateBoard(title, context, idx);
+	}
+
+	@Override
+	public int deleteBoard(int index) {
+		// 글삭제
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		return mapper.deleteBoard(index);
+	}
+
+	@Override
+	public String selectUserWritten(int index, String id) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		return mapper.selectUserWritten(index, id);
 	}
 
 }
