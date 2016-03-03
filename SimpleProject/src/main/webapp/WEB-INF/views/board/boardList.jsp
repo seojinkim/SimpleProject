@@ -23,13 +23,13 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
           	</button>
-          	<a class="navbar-brand" href="${context}/board/boardList">NH여행 게시판</a>
+          	<a class="navbar-brand" href="#">NH여행 게시판</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           	<ul class="nav navbar-nav pull-right">
 	            <li><a href="#">ㅇㅇㅇ</a></li>
 	            <li><a href="${context}/member/updateForm">회원정보</a></li>
-	            <li><a href="javascript:logout()">로그아웃</a></li>
+	            <li><a href="${context}/member/logout">로그아웃</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -59,9 +59,6 @@
     </div>
     <a href="${context}/board/boardInsertForm">글쓰기</a>
     <script type="text/javascript">
-    	function logout(){
-    		
-    	}
     </script>
 </body>
 </html>
