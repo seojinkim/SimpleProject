@@ -26,6 +26,7 @@ public class BoardController {
 	@RequestMapping(value = "/boardList", method = RequestMethod.GET)
 	public String BoardList(Model model) {
 
+		System.out.println("보드보드");
 		BoardVO[] boardList = service.selectBoard();
 		if (boardList == null) {
 			System.out.println("게시판글이 없습니다.");
