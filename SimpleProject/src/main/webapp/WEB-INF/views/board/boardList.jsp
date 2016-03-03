@@ -48,7 +48,7 @@
             <tbody>
             <c:forEach items="${boardList}" var="b">
               <tr>
-                <td>${b.index}</td>
+                <td>${b.idx}</td>
                 <td>${b.title}</td>
                 <td>${b.id}</td>
               </tr>

@@ -4,17 +4,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BoardVO {
-	private int index;
+	private int idx;
 	private String id;
 	private String title;
 	private String context;
 
-	public int getIndex() {
-		return index;
+	public int getIdx() {
+		return idx;
 	}
 
-	public void setIndex(int index) {
-		this.index = index;
+	public void setIdx(int idx) {
+		this.idx = idx;
 	}
 
 	public String getId() {
@@ -43,6 +43,7 @@ public class BoardVO {
 
 	@Override
 	public String toString() {
-		return "BoardVO [index=" + index + ", id=" + id + ", title=" + title + ", context=" + context + "]";
+		return "BoardVO [idx=" + idx + ", id=" + id + ", title=" + title + ", context=" + context + "]";
 	}
+
 }
