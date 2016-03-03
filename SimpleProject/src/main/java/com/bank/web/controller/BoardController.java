@@ -91,19 +91,21 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String update(@RequestParam("context") String context, @RequestParam("title") String title,
-			HttpServletRequest request, HttpSession session, Model model) {
+	public String update(HttpServletRequest request, HttpSession session, Model model) {
 
-		BoardVO temp = new BoardVO();
-		temp = (BoardVO) session.getAttribute("board");
-		board.setContext(context);
-		int result = service.updateBoard(title, context, Integer.parseInt(request.getParameter("idx")));// service의
+		/*BoardVO temp = new BoardVO();
+		temp = (BoardVO) session.getAttribute("board");*/
+		
+		board = service.selectDetail(Integer.parseInt(request.getParameter("idx")));
+		
+		//board.setContext(context);
+		int result = service.updateBoard(board.getTitle(), board.getContext(), Integer.parseInt(request.getParameter("idx")));// service의
 															// updateboard호출
 		String page = "";
 		if (result == 1) {
-			temp.setContext(context);
-			session.setAttribute("board", temp);
-			page = "board//boardDetail";
+			/*temp.setContext(context);
+			session.setAttribute("board", temp);*/
+			page = "board/boardDetail";
 		} else {
 			System.out.println("글 수정 실패");
 			page = "board/updateForm";
