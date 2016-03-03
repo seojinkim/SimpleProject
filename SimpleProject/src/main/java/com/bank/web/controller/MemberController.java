@@ -23,13 +23,13 @@ public class MemberController {
 	@Autowired
 	MemberServiceImpl service;
 
-	@RequestMapping(value = "/loginForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/loginForm")
 	public String loginForm(Model model) {
 
 		return "member/loginForm";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login")
 	public String login(
 			@RequestParam("id") String id,
 			@RequestParam("password") String password,
@@ -64,13 +64,13 @@ public class MemberController {
 
 	}
 
-	@RequestMapping(value = "/joinForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/joinForm")
 	public String joinForm(Model model) {
 
 		return "member/joinForm";
 	}
 
-	@RequestMapping(value = "/join", method = RequestMethod.POST)
+	@RequestMapping(value = "/join")
 	public String join(
 			@RequestParam("id") String id,
 			@RequestParam("password") String password,
