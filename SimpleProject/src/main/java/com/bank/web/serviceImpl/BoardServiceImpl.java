@@ -26,4 +26,10 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.insertBoard(id, title, context);
 	}
 
+	@Override
+	public BoardVO selectDetail(int index) {
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		return mapper.selectDetail(index);
+	}
+
 }
