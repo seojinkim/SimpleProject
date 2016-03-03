@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="${context}/board/insertBoard" method="post" name="insertBoardForm">
+<form action="${context}/board/boardInsert" method="post" name="insertBoardForm">
 제목<input type="text" id="title" name="title" />
 본문<input type="text" id="context" name="context"/>
 <input type="button" value="글쓰기" onclick="writeBoard()"/>
