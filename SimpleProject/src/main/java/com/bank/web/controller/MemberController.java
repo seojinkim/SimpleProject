@@ -55,7 +55,7 @@ public class MemberController {
 				message = member.getName();
 				session.setAttribute("member", member);
 				model.addAttribute("message", message);
-				page = "member/detail";
+				page = "board/boardList";
 				System.out.println("로그인 후 message : " + message);
 			}
 
