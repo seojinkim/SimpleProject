@@ -12,6 +12,7 @@
 본문<input type="text" id="context" name="context"/>
 <input type="button" value="글쓰기" onclick="writeBoard()"/>
 </form>
+<input type="hidden" id="id" value="${sessionScope.member.id}"/>
 <script type="text/javascript">
 function writeBoard(){
 	

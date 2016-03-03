@@ -34,7 +34,7 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [아이디" + getId() + ", 비밀번호=" + getPassword() + ", 이름=" + getName() + "]";
+		return "MemberVO [id=" + getId() + ", password=" + getPassword() + ", name=" + getName() + "]";
 		
 	}
 
