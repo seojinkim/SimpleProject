@@ -6,6 +6,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
+	
+	/*//로그인 후 게시판 보기
+	@RequestMapping(value = "/board", method = RequestMethod.GET)
+	public String myAccount(Model model) {
+
+		BoardVO board = new BoardVO();
+		acc = boardService.
+		if (acc == null) {
+			System.out.println("계좌정보가 없습니다.");
+		} else {
+			System.out.println("내 계좌정보 : " + acc.getAccountNo());
+			System.out.println("내 계좌 잔액 : " + acc.getMoney());
+			System.out.println("내 계좌 비번 : " + acc.getPassword());
+			System.out.println("내 통장" + acc.getTitle());
+			model.addAttribute("acc", acc);
+			model.addAttribute("id", userid);
+		}
+	
+		return "account/myAccount";
+	}*/
+	
 	/*
 	@Autowired
 	AccountServiceImpl accountService;

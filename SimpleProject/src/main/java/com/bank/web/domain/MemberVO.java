@@ -4,16 +4,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MemberVO {
-	private String userid;
+	private String id;
 	private String password;
 	private String name;
 
-	public String getUserid() {
-		return userid;
+	public String getId() {
+		return id;
 	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getPassword() {
@@ -34,7 +34,7 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [userid=" + userid + ", password=" + password + ", name=" + name + "]";
+		return "MemberVO [아이디" + getId() + ", 비밀번호=" + getPassword() + ", 이름=" + getName() + "]";
 	}
 
 }

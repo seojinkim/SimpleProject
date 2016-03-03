@@ -2,10 +2,23 @@ package com.bank.web.serviceImpl;
 
 import org.springframework.stereotype.Service;
 
+import com.bank.web.domain.BoardVO;
 import com.bank.web.service.BoardService;
 
 @Service
 public class BoardServiceImpl implements BoardService {
+
+	@Override
+	public BoardVO[] selectBoard() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int insertBoard(String id, String title, String context) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	/*AccountVO account = new AccountVO();
 	
 	@Autowired
