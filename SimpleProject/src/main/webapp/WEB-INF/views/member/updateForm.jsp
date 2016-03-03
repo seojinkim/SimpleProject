@@ -11,12 +11,12 @@
 			<h2 class="text-center">회원정보수정</h2>
 		</div>
 		<div class="updateCenter row">
-			<form action="${context}/member/update" method="get" name="updateForm" class="form-horizontal"> 
+			<form action="${context}/member/update" method="post" name="updateForm" class="form-horizontal"> 
 				<fieldset class="updateField">
 					<div class="form-group">
 					 	<label for="input_id" class="col-sm-4 control-label">ID</label>
 					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="userid" name="userid" value="${member.userid}" readonly/>
+							<input type="text" class="form-control" id="id" name="id" value="${member.userid}" readonly/>
 						</div>
 					</div>
 					<div class="form-group">

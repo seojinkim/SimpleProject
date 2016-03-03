@@ -21,7 +21,7 @@
 					<div class="form-group">
 					 	<label for="input_id" class="col-sm-4 control-label">ID</label>
 					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="userid" name="userid" placeholder="ID"/>
+							<input type="text" class="form-control" id="id" name="id" placeholder="ID"/>
 						</div>
 					</div>
 					<div class="form-group">

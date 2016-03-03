@@ -18,12 +18,12 @@
 			<h2 class="text-center">Sign In</h2>
 		</div>
 		<div class="loginCenter row">
-			<form action="${context}/member/login" method="get" name="loginForm" class="form-horizontal">
+			<form action="${context}/member/login" method="post" name="loginForm" class="form-horizontal">
 				<fieldset class="loginField">
 					<div class="form-group">
 					 	<label for="input_id" class="col-sm-4 control-label">ID</label>
 					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="userid" name="userid" placeholder="ID"/>
+							<input type="text" class="form-control" id="id" name="id" placeholder="ID"/>
 						</div>
 					</div>
 					<div class="form-group">
