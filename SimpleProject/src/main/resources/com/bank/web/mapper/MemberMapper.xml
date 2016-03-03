@@ -24,14 +24,14 @@
  	<select id="selectMember" resultType="com.bank.web.domain.MemberVO" parameterType="com.bank.web.domain.MemberVO">
  		SELECT * 
  		FROM   member 
- 		WHERE  userid = #{userid} 
+ 		WHERE  id = #{id} 
  		AND    password = #{password}
  	</select>
  	
- 	<select id="selectUserid" resultType="string" parameterType="string">
- 		SELECT userid 
+ 	<select id="selectId" resultType="string" parameterType="string">
+ 		SELECT id 
  		FROM   member 
- 		WHERE  userid = #{userid}
+ 		WHERE  id = #{id}
  	</select>
  </mapper>
  
