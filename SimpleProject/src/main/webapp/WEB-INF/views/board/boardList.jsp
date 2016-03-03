@@ -64,7 +64,7 @@
           </table>
         </div>
     </div>
-    <a href="${context}/board/boardInserForm">글쓰기</a>
+    <a href="${context}/board/boardInsertForm">글쓰기</a>
     <script type="text/javascript">
     	function logout(){
     		
