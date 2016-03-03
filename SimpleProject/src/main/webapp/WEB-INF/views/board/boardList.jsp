@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -45,21 +46,13 @@
               </tr>
             </thead>
             <tbody>
+            <c:forEach items="${boardList}" var="b">
               <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
+                <td>${b.index}</td>
+                <td>${b.title}</td>
+                <td>${b.id}</td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-              </tr>
+              </c:forEach>
             </tbody>
           </table>
         </div>
