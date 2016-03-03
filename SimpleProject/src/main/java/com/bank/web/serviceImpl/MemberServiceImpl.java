@@ -21,7 +21,6 @@ public class MemberServiceImpl implements MemberService {
 	private SqlSession sqlSession;
 
 	public MemberServiceImpl() {
-
 		map = new HashMap<String, MemberVO>();
 	}
 

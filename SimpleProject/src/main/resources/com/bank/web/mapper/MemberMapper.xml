@@ -20,6 +20,7 @@
  		INSERT INTO member(id, password, name) 
  		VALUES (#{id},#{password},#{name})
  	</insert>
+ 	
  	<select id="selectMember" resultType="com.bank.web.domain.MemberVO" parameterType="com.bank.web.domain.MemberVO">
  		SELECT * 
  		FROM   member 

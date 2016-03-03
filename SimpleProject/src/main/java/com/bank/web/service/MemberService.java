@@ -9,7 +9,6 @@ public interface MemberService {
 	public int updateMember(MemberVO member);
 	public int remove(String id);
 	/*
-	
 	public MemberVO searchById(String id);
 	
 	public List<MemberVO> searchByName(String name);
