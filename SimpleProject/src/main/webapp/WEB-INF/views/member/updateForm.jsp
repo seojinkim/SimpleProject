@@ -21,25 +21,24 @@
 			<h2 class="text-center">회원정보수정</h2>
 		</div>
 		<div class="updateCenter row">
-			<form action="${context}/member/update" method="post"
-				name="updateForm" class="form-horizontal">
+			<form action="${context}/member/update" method="post" name="updateForm" class="form-horizontal">
 				<fieldset class="updateField">
 					<div class="form-group">
-						<label for="input_id" class="col-sm-4 control-label">ID</label>
+						<label for="input_id" class="col-sm-4 control-label">아이디</label>
 						<div class="col-sm-4">
 							<input type="text" class="form-control" id="id" name="id"
 								value="${member.id}" readonly />
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="input_pw" class="col-sm-4 control-label">PASSWORD</label>
+						<label for="input_pw" class="col-sm-4 control-label">비밀번호</label>
 						<div class="col-sm-4">
 							<input type="password" class="form-control" id="password"
 								name="password" required="required" />
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="input_name" class="col-sm-4 control-label">NAME</label>
+						<label for="input_name" class="col-sm-4 control-label">이름</label>
 						<div class="col-sm-4">
 							<input type="text" class="form-control" id="name" name="name"
 								value="${member.name}" required="required" />
@@ -47,12 +46,12 @@
 					</div>
 					<div class="input_button text-center">
 						<input type="button" id="updateButton" class="btn btn-primary"
-							value="UPDATE" onclick="updateMember()" />
+							value="수정" onclick="updateMember()" />
 						<input type="button"
-							id="withdrawalButton" class="btn btn-primary" value="WITHDRAWAL"
+							id="withdrawalButton" class="btn btn-primary" value="탈퇴"
 							onclick="withdrawalMember()" />
 					<a class="btn btn-primary"
-							href="${context}/board/boardList" role="button">CANCEL</a>
+							href="${context}/board/boardList" role="button">취소</a>
 					</div>
 				</fieldset>
 			</form>

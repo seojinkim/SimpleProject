@@ -35,6 +35,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int updateBoard(String title, String context, int idx) {
 		// 글수정
+		System.out.println("글 수정 중");
 		BoardMapper mapper =  sqlSession.getMapper(BoardMapper.class);
 		return mapper.updateBoard(title, context, idx);
 	}

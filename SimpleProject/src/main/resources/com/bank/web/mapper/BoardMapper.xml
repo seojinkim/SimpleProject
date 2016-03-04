@@ -7,12 +7,13 @@
 	<select id="selectBoard" resultType="com.bank.web.domain.BoardVO">
 		SELECT *
 		FROM board
+		ORDER BY idx DESC
 	</select>
 
 	<insert id="insertBoard" parameterType="com.bank.web.domain.BoardVO">
 		INSERT INTO board
 		VALUES
-		(idx.NEXTVAL, #{id}, #{title}, #{context})
+		(seq_idx.NEXTVAL, #{id}, #{title}, #{context})
 	</insert>
 
 	<select id="selectDetail" resultType="com.bank.web.domain.BoardVO">

@@ -86,25 +86,29 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/updateForm", method = RequestMethod.GET)
-	public String updateForm() {
-		return "board/updateForm";
+	public String updateForm(HttpServletRequest request, HttpSession session, Model model) {
+		board = service.selectDetail(Integer.parseInt(request.getParameter("idx")));
+		model.addAttribute("board", board);
+		System.out.println("김서짆ㅎ" + board);
+		return "board/boardUpdateForm";
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(HttpServletRequest request, HttpSession session, Model model) {
 
 		/*BoardVO temp = new BoardVO();
 		temp = (BoardVO) session.getAttribute("board");*/
 		
+		//board.setContext(context);
+		int result = service.updateBoard(request.getParameter("title"), request.getParameter("context"), Integer.parseInt(request.getParameter("idx")));// service의
+															// updateboard호출
 		board = service.selectDetail(Integer.parseInt(request.getParameter("idx")));
 		
-		//board.setContext(context);
-		int result = service.updateBoard(board.getTitle(), board.getContext(), Integer.parseInt(request.getParameter("idx")));// service의
-															// updateboard호출
 		String page = "";
 		if (result == 1) {
 			/*temp.setContext(context);
 			session.setAttribute("board", temp);*/
+			model.addAttribute("board", board);
 			page = "board/boardDetail";
 		} else {
 			System.out.println("글 수정 실패");
@@ -113,20 +117,16 @@ public class BoardController {
 		return page;
 	}
 
-	@RequestMapping(value = "/remove/{userid}", method = RequestMethod.POST)
-	public String remove(@PathVariable("index") String index, @PathVariable("context") String context,
-			HttpSession session, SessionStatus status) {
-		BoardVO temp = new BoardVO();
-		System.out.println("삭제글 : " + index + context);
-		int result = service.deleteBoard(Integer.parseInt(index));
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String remove(HttpServletRequest request) {
+		int result = service.deleteBoard(Integer.parseInt(request.getParameter("idx")));
 		String page = "";
 		if (result == 1) {
 			System.out.println("글 삭제 성공");
-			status.setComplete();
 			page = "redirect:/board/boardList";
 		} else {
 			System.out.println("글 삭제 실패 ");
-			page = "board/detail";
+			page = "board/boardDetail";
 		}
 		return page;
 	}
